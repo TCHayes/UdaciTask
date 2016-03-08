@@ -13,19 +13,19 @@ march_todos.add_item("Rebalance Investments")
 march_todos.print_list
 
 # Delete the first item
-march_todos.remove_item([0])
+march_todos.remove_item(0)
 
 # Print the list
 march_todos.print_list
 
 # Delete the second item
-march_todos.remove_item([1])
+march_todos.remove_item(1)
 
 # Print the list
 march_todos.print_list
 
 # Update the completion status of the first item to complete
-march_todos[:items][0][:completion_status].toggle_completion_status
+march_todos.toggle_completion_status(0)
 
 # Print the list
 march_todos.print_list
