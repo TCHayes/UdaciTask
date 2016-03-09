@@ -12,7 +12,7 @@ class TodoList
     	@items.push(item)
     end
 
-    def remove_item(item)
+    def remove_item(item) #requires user to enter item by index
         @items.delete_at(item)
     end
 
@@ -20,18 +20,22 @@ class TodoList
         @title = new_name
     end
 
-    def toggle_completion_status(finished_item)
+    def toggle_completion_status(finished_item) #requires user to enter finished_item by index
         items[finished_item].completion_status = !items[finished_item].completion_status
-        #Need to select finished_item out of array
     end
 
     def print_list
-        puts "*" * @title.length
+        puts "=" * @title.length
         puts @title
-        puts "*" * @title.length
+        puts "=" * @title.length
         count = 1
         @items.each do |item|
-            puts "#{count}: #{item.description}: #{item.completion_status}"
+            if item.completed?
+                natural_status = "Complete"
+            else
+                natural_status = "Incomplete"
+            end
+            item.print_item(count, natural_status)
             count = count + 1
         end
         puts "\n"
@@ -48,6 +52,10 @@ class Item
 
     def completed?
         @completion_status
+    end
+
+    def print_item(count, natural_status)
+        puts "#{count}: #{@description}: #{natural_status}"
     end
 
     attr_accessor :description, :completion_status
