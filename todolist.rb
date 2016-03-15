@@ -25,9 +25,11 @@ class TodoList
     end
 
     def print_list
-        puts "=" * @title.length
-        puts @title
-        puts "=" * @title.length
+        fname = "#{title}.txt"
+        output = File.open(fname, "w")
+        output.puts "=" * @title.length
+        output.puts @title
+        output.puts "=" * @title.length
         count = 1
         @items.each do |item|
             if item.completed?
@@ -35,10 +37,11 @@ class TodoList
             else
                 natural_status = "Incomplete"
             end
-            item.print_item(count, natural_status)
+            item.print_item(count, natural_status, output)
             count = count + 1
         end
-        puts "\n"
+        output.puts "\n"
+        output.close
     end
 end
 
@@ -54,8 +57,8 @@ class Item
         @completion_status
     end
 
-    def print_item(count, natural_status)
-        puts "#{count}: #{@description}: #{natural_status}"
+    def print_item(count, natural_status, output_variable)
+        output_variable.puts "#{count}: #{@description}: #{natural_status}"
     end
 
     attr_accessor :description, :completion_status
