@@ -1,7 +1,7 @@
 require_relative "todolist"
 
 # Creates a new todo list
-march_todos = TodoList.new("March To-do List")
+march_todos = TodoList.new("March To-do List", "Terry")
 
 # Add four new items
 march_todos.add_item("Finish Udacity Task Manager")

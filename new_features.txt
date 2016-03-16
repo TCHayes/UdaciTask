@@ -1,0 +1,5 @@
+1: Print list output to file with title of list as the filename.
+
+2: Added ‘user’ as a list attribute. Lists are now organized in directories by user name.
+
+3: Add timestamp to lists, and if a list with a given title already exists, save the new list in the same txt file, but underneath the original. This is in contrast to overwriting the list in the previous program.
